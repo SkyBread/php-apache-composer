@@ -19,6 +19,7 @@ RUN apt-get update -q -y \
         libpng16-16 \
         libicu63 \
         libxslt1.1 \
+        libmemcachedutil2 \
         libzip4 \
         imagemagick \
         libonig5 \
@@ -53,8 +54,10 @@ RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/local/bin --filename=composer \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN composer 
+RUN cd /var/www/html/
 
-VOLUME /var/www/html/
+RUN composer require --dev codeception/codeception
+
+VOLUME /var/www/
 
 EXPOSE 80
