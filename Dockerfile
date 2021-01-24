@@ -54,10 +54,6 @@ RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/local/bin --filename=composer \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN cd /var/www/html/
-
-RUN composer require --dev codeception/codeception
-
 VOLUME /var/www/
 
 EXPOSE 80
