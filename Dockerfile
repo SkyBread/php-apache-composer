@@ -5,8 +5,8 @@ COPY src/ /var/www/html/
 
 # Set defaults for variables used by run.sh
 ENV COMPOSER_HOME=/root/.composer
-ENV GIT_USER_EMAIL=""
-ENV GIT_USER_NAME=""
+ENV GIT_USER_EMAIL="git_user@email.com"
+ENV GIT_USER_NAME="git_username"
 
 RUN apt-get update -q -y \
     && apt-get install -q -y --no-install-recommends \
