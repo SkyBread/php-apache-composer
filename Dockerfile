@@ -5,6 +5,8 @@ COPY src/ /var/www/html/
 
 # Set defaults for variables used by run.sh
 ENV COMPOSER_HOME=/root/.composer
+ENV GIT_USER_EMAIL=""
+ENV GIT_USER_NAME=""
 
 RUN apt-get update -q -y \
     && apt-get install -q -y --no-install-recommends \
@@ -53,6 +55,9 @@ RUN set -xe \
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/local/bin --filename=composer \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN git config --global user.email ${GIT_USER_EMAIL}
+RUN git config --global user.name ${GIT_USER_NAME}
 
 VOLUME /var/www/
 
